@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2021, 1:13:47 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="Exemplaire" table="Exemplaire" catalog="library">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="rangee" class="Rangee" fetch="select">
+            <column name="rangee_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="livre" class="Livre" fetch="select">
+            <column name="livre_id" not-null="true" />
+        </many-to-one>
+        <set name="emprunts" inverse="true">
+            <key>
+                <column name="exemplaire_id" />
+            </key>
+            <one-to-many class="Emprunt" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2021, 1:14:46 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="Categorie" table="Categorie" catalog="library">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categorie" class="Categorie" fetch="select">
+            <column name="categorie_id" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="nom" length="30" />
+        </property>
+        <set name="categories" inverse="true">
+            <key>
+                <column name="categorie_id" />
+            </key>
+            <one-to-many class="Categorie" />
+        </set>
+    </class>
+</hibernate-mapping>

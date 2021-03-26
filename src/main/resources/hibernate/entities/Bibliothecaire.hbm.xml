@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2021, 1:14:46 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="Bibliothecaire" table="Bibliothecaire" catalog="library">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="adresse" type="string">
+            <column name="adresse" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="64" />
+        </property>
+        <property name="nom" type="string">
+            <column name="nom" length="32" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" length="32" />
+        </property>
+        <property name="tel" type="string">
+            <column name="tel" length="32" />
+        </property>
+        <set name="emprunts" inverse="true">
+            <key>
+                <column name="bibliothecaire_id" not-null="true" />
+            </key>
+            <one-to-many class="Emprunt" />
+        </set>
+    </class>
+</hibernate-mapping>
